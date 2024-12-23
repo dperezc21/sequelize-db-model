@@ -1,0 +1,31 @@
+{
+  "name": "sequelize-db-model",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "devDependencies": {
+    "typescript": "^5.7.2"
+  },
+  "scripts": {
+    "test": "jest dist/tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dperezc21/sequelize-db-model.git"
+  },
+  "keywords": [
+    "sequelize",
+    "orm",
+    "database"
+  ],
+  "author": "davier enrique perez cabrera",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dperezc21/sequelize-db-model/issues"
+  },
+  "homepage": "https://github.com/dperezc21/sequelize-db-model#readme",
+  "dependencies": {
+    "mysql2": "^3.11.5",
+    "sequelize": "^6.37.5"
+  }
+}
