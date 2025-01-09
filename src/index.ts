@@ -1,6 +1,7 @@
 import {ModelTable} from "./interfaces/model-table";
 import {ModelAttributes, ModelOptions} from "sequelize";
 import {ModelSequelize} from "./model-sequelize";
+import {CreateModelError} from "./errors/create-model.error";
 
 export class CreateModels {
     private static listModel: ModelTable[] = [];
@@ -11,14 +12,10 @@ export class CreateModels {
 
     async createTables() {
         try {
-            await Promise.all(CreateModels.listModel.map(value => value.createTableModel()));
+            await Promise.all(CreateModels.listModel.map(value => value.createTableModel().catch()));
         } catch (err) {
-            throw new Error(err);
+            throw new CreateModelError(err);
         }
-    }
-
-    getListModels(): ModelTable[] {
-        return CreateModels.listModel;
     }
 }
 

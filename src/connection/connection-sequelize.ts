@@ -1,8 +1,10 @@
 import {Dialect, Sequelize} from "sequelize";
 import {DB_HOST, DB_NAME, DB_PASSWORD, DB_PORT, DB_USER_NAME} from "../config";
 
-export abstract class ConnectionSequelize {
+export class ConnectionSequelize {
     protected static sequelize: Sequelize;
+
+    constructor() {}
 
     setSequelize(connection?: Sequelize) {
         ConnectionSequelize.sequelize = connection;
@@ -25,5 +27,9 @@ export abstract class ConnectionSequelize {
                 host: dbHost || DB_HOST,
                 port: dbPort || DB_PORT
             });
+    }
+
+    getSequelize() {
+        return ConnectionSequelize.sequelize;
     }
 }

@@ -4,5 +4,4 @@ export interface ConnectionRepository {
     connection(): Sequelize;
     connect(): void;
     disconnect(): void;
-
 }
