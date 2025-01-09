@@ -10,7 +10,7 @@ export class CreateModels {
         CreateModels.listModel.push(new ModelSequelize(modelName, attributes, options));
     }
 
-    async createTables() {
+    static async createTables() {
         try {
             await Promise.all(CreateModels.listModel.map(value => value.createTableModel().catch()));
         } catch (err) {
