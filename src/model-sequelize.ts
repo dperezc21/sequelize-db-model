@@ -28,7 +28,7 @@ export class ModelSequelize implements ModelTable {
     createTableModel(): Promise<string> {
         return new Promise((resolve, reject) => {
             const tableName: string = this.options?.tableName || this.getModel()?.tableName;
-            this.getModel().sync().then(value => {
+            this.getModel().sync().then(() => {
                 resolve(`Table ${tableName} created`);
             }).catch(err => reject(new CreateModelError(`Unable to create ${tableName} table` + err)))
         })
