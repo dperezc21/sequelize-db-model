@@ -46,7 +46,7 @@ createModel.addModel('Product',{
             type: DataTypes.STRING,
             allowNull: false,
         },
-        name: {
+        code: {
             type: DataTypes.NUMBER,
             allowNull: false,
         }
