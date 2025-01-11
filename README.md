@@ -56,7 +56,7 @@ createModel.addModel('Product',{
 await CreateModel.createTables();
 
 export const userModel = CreateModel.getModel('User'); 
-export const userModel = CreateModel.getModel('Product');
+export const productModel = CreateModel.getModel('Product');
 ```
 
 **Contributions are welcome**. 
