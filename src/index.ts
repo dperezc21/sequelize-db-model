@@ -3,19 +3,25 @@ import {ModelAttributes, ModelOptions} from "sequelize";
 import {ModelSequelize} from "./model-sequelize";
 import {CreateModelError} from "./errors/create-model.error";
 
-export class CreateModels {
+export class CreateModel {
     private static listModel: ModelTable[] = [];
 
     addModel(modelName: string, attributes: ModelAttributes, options?: ModelOptions) {
-        CreateModels.listModel.push(new ModelSequelize(modelName, attributes, options));
+        if(CreateModel.getModel(modelName)) throw new Error("model name exists");
+        CreateModel.listModel.push(new ModelSequelize(modelName, attributes, options));
     }
 
     static async createTables() {
         try {
-            await Promise.all(CreateModels.listModel.map(value => value.createTableModel().catch()));
+            await Promise.all(CreateModel.listModel.map(value => value.createTableModel().catch()));
         } catch (err) {
             throw new CreateModelError(err);
         }
+    }
+
+    static getModel(modelName: string) {
+        return CreateModel.listModel
+            .find(value => value.modelName.toLowerCase() == modelName.toLowerCase())?.getModel();
     }
 }
 

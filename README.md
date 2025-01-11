@@ -28,7 +28,11 @@ UserModel.sync()
 ```
 const createModel = new CreateModels();
 
-// use addModel method to add all models that need create
+/**
+ * use addModel method to add all models that need create
+ */
+
+// add user model
 createModel.addModel('User',{
         name: {
             type: DataTypes.STRING,
@@ -36,9 +40,23 @@ createModel.addModel('User',{
         }
     });
     
+// add product
+createModel.addModel('Product',{
+        name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        name: {
+            type: DataTypes.NUMBER,
+            allowNull: false,
+        }
+    }); 
+   
 // do call createTables and create all models that defined previous
 await CreateModels.createTables();
+
+export const userModel = CreateModels.getModel('User'); 
+export const userModel = CreateModels.getModel('Product');
 ```
 
-
-##### Contributions are welcome. If you find a bug or have an improvement to suggest, open an issue or pull request.
+##### **Contributions are welcome**. If you find a bug or have an improvement to suggest, open an issue or pull request.

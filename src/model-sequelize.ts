@@ -7,7 +7,7 @@ const modelConnection: ConnectionSequelize = new ConnectionSequelize();
 
 export class ModelSequelize implements ModelTable {
     private connection: Sequelize = modelConnection.getSequelize();
-    private readonly modelName!: string;
+    modelName!: string;
     private model!: ModelStatic<Model>;
 
     constructor(modelName: string, private readonly attributes: ModelAttributes, private readonly options?: ModelOptions) {
